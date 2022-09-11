@@ -28,6 +28,7 @@ module.exports = app => {
     })
       .catch(err => done(err,false))
   }))
+  
 //設定facebook登入
   passport.use(new FacebookStrategy({
     clientID: process.env.FACEBOOK_ID,
@@ -52,7 +53,7 @@ module.exports = app => {
           .catch(err => done(err, false))
       })
   }))
-  
+
   //序列與反序列
   passport.serializeUser((user,done)=> {
     done(null,user.id)
