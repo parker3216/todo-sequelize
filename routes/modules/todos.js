@@ -55,7 +55,7 @@ router.get('/:id', (req, res) => {
   const id = req.params.id
   return Todo.findOne({ where: { id, UserId } })
     .then(todo => res.render('detail', { todo: todo.toJSON() }))
-    .catch(error = console.log(error))  
+    .catch((error) => { return res.status(422).json(error) }) 
 })
 
 // delete
